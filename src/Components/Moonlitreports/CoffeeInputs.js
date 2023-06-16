@@ -47,7 +47,7 @@ function CoffeeInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
 
     let report = '';
     if (!allEmpty) {
-      report += `Good ${greeting} Ma'am/Sir Sales sa coffee \n`
+      report += `Good ${greeting} Ma'am and Sir Sales sa coffee \n`
     
       Object.entries(formValues).forEach(([key, value]) => {
         if (value !== '') {
