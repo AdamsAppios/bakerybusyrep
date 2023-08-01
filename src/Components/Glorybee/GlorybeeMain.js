@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import GloryExpensesMain from './Expenses/GloryExpensesMain';
+import GlorySalesMain from './Sales/GlorySalesMain';
 const GlorybeeMain = () => {
   const [activeTab, setActiveTab] = useState(1);
 
@@ -31,7 +32,7 @@ const GlorybeeMain = () => {
         </div>
         <div className="tab-content">
           {activeTab === 1 && <GloryExpensesMain />}
-          {activeTab === 2 &&  <div> Hello 2 </div>}
+          {activeTab === 2 && <GlorySalesMain />}
         </div>
       </div>
     </div>
