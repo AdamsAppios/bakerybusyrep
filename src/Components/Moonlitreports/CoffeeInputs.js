@@ -70,6 +70,7 @@ function CoffeeInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
               <Customtext label="caramel" name="caramel" Placeholder="Caramel End" value={formValues.caramel} OnChange={handleInputChange} handleFocus={handleOtherFocus}/>
               <Customtext label="cupsBeg" name="cupsBeg" Placeholder="Cups Beg" value={formValues.cupsBeg} OnChange={handleInputChange} handleFocus={handleOtherFocus}/>
               <Customtext label="cupsEnd" name="cupsEnd" Placeholder="Cups End" value={formValues.cupsEnd} OnChange={handleInputChange} handleFocus={handleOtherFocus}/>            
+              
          </tbody>
         </table>
       </div>
