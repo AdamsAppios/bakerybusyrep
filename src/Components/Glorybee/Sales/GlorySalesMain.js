@@ -59,6 +59,7 @@ const GlorySalesMain = () => {
 
   return (
     <div>
+      <h2> Glory Bee Sales</h2>
       <Copytoclipboard stringReport={stringReport} handleEraseAll={handleEraseAll} copyButtonLabel="Copy Report" eraseButtonLabel="Erase All" readOnly />
       <br />
       <br />
