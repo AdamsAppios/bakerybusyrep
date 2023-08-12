@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import Copytoclipboard from '../../Moonlitreports/Helpers/Copytoclipboard';
 
 const GlorySalesMain = () => {
-  const initialInputBoxes = [{ id: 1 }, { id: 2 }, {id:3}, {id:4}, {id:5}, {id:6}, {id:7}, {id:8}, {id:9}, {id:10}];
+  const defaultNames = ["Sales","nss", "Nsb", "C2", "Gatorade", "Coffee", "Swakto", "Cobra", "Md", "Drinks", "12oz", "Ice-cream", "Charda"];
+
+  const getDefaultValues = () => {
+    let defaultValues = {};
+    defaultNames.forEach((name, index) => {
+      defaultValues[`name${index}`] = name;
+    });
+    return defaultValues;
+  };
+
+  const initialInputBoxes = Array(defaultNames.length).fill().map((_, index) => ({ id: index + 1 }));
   const [inputBoxes, setInputBoxes] = useState(initialInputBoxes);
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState(getDefaultValues());
   const [totalAmount, setTotalAmount] = useState(0);
   const [stringReport, setStringReport] = useState('');
+
 
   const handleInputChange = (event, index) => {
     const { id, value } = event.target;
@@ -30,7 +41,7 @@ const GlorySalesMain = () => {
     const philippineDate = currentDate.toLocaleDateString('en-PH', options);
     let report = `Gud evening nong Expenses Jedamsa ${philippineDate} : \n`;
     report += `${formatValuesAsString(updatedValues)}\n\n`;
-    report+= `Total expenses nong: ${sum.toFixed(2)}`;
+    report += `Total expenses nong: ${sum.toFixed(2)}`;
     setStringReport(report);
   };
 
@@ -52,9 +63,9 @@ const GlorySalesMain = () => {
 
   const handleEraseAll = () => {
     setInputBoxes(initialInputBoxes); // Revert to initial input boxes
-    setValues({});                    // Clear values
-    setTotalAmount(0);                // Reset total amount
-    setStringReport('');              // Clear string report
+    setValues(getDefaultValues(defaultNames)); // Reset to default names
+    setTotalAmount(0); // Reset total amount
+    setStringReport(''); // Clear string report
   };
 
   return (
@@ -69,14 +80,14 @@ const GlorySalesMain = () => {
             type="text"
             id={`name${index}`}
             placeholder={`Name ${index}`}
-            value={values[`name${index}`] || ''} // Control the input value
+            value={values[`name${index}`] || ''}
             onChange={(event) => handleInputChange(event, index)}
           />
           <input
             type="text"
             id={`amt${index}`}
             placeholder={`Amount ${index}`}
-            value={values[`amt${index}`] || ''} // Control the input value
+            value={values[`amt${index}`] || ''}
             onChange={(event) => handleInputChange(event, index)}
           />
         </div>
