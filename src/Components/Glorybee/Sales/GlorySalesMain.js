@@ -39,9 +39,8 @@ const GlorySalesMain = () => {
     const currentDate = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const philippineDate = currentDate.toLocaleDateString('en-PH', options);
-    let report = `Gud evening nong Expenses Jedamsa ${philippineDate} : \n`;
+    let report = `${philippineDate} Mao ni nahalin Nong : \n`;
     report += `${formatValuesAsString(updatedValues)}\n\n`;
-    report += `Total expenses nong: ${sum.toFixed(2)}`;
     setStringReport(report);
   };
 
