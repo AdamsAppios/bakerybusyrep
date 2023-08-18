@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sendreport from "./Moonlitreports/Sendreport";
 import Moneymain from "./MoneyCounter/Moneymain";
 import GlorybeeMain from './Glorybee/GlorybeeMain';
-import RefillingCCTVMain from "./RefillingCCTV/RefillingCCTVMain";
+import RefillingCCTVMainWithReducer from './RefillingCCTV/RefillingCCTVMainWithReducer';
 function Homepage() {
   return (
     <Router>
@@ -13,7 +13,7 @@ function Homepage() {
         <Route path="/sendreport" element={<Sendreport />} />
         <Route path="/moneycount" element={<Moneymain />} />
         <Route path="/glorybee" element={<GlorybeeMain />} />
-        <Route path="/refcccount" element={<RefillingCCTVMain />} />
+        <Route path="/refcccount" element={<RefillingCCTVMainWithReducer />} />
       </Routes>
     </Router>
   );

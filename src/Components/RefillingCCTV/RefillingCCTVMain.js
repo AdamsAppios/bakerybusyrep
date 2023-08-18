@@ -107,24 +107,24 @@ const RefillingCCTVMain = () => {
     toggleBackgroundColor('blue')
     switch (selectedOption) {
         case 'pickup':
-        setPickupCount(pickupCount + 1*multipleCount);
-        speakMessage("Plus Pickup");
+            setPickupCount(pickupCount + 1*multipleCount);
+            speakMessage("Plus Pickup");
         break;
         case 'dealer':
-        setDealerCount(dealerCount + 1*multipleCount);
-        speakMessage("Plus Dealer");
+            setDealerCount(dealerCount + 1*multipleCount);
+            speakMessage("Plus Dealer");
         break;
         case 'small':
-        setSmallCount(smallCount + 1*multipleCount);
-        speakMessage("Plus Small");
+            setSmallCount(smallCount + 1*multipleCount);
+            speakMessage("Plus Small");
         break;
         case 'square':
-        setSquareCount(squareCount + 1*multipleCount);
-        speakMessage("Plus Square");
+            setSquareCount(squareCount + 1*multipleCount);
+            speakMessage("Plus Square");
         break;
         case 'smallSquare':
-        setSmallSquareCount(smallSquareCount + 1*multipleCount);
-        speakMessage("Plus Square Small");
+            setSmallSquareCount(smallSquareCount + 1*multipleCount);
+            speakMessage("Plus Square Small");
         break;
         default:
         break;
