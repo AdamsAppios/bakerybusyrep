@@ -1,12 +1,10 @@
 import React from 'react';
 
-const InputGroup = ({ dispatch }) => {
-    return (
-        <div>
-            {/* Your input related UI components and logic here. 
-                 Use the dispatch function as required */}
-        </div>
-    );
-};
+const InputGroup = ({ label, value, onChange, type = "text" }) => (
+    <div style={{ margin: '10px 0' }}>
+        <label>{label}: </label>
+        <input type={type} value={value} onChange={onChange} />
+    </div>
+);
 
 export default InputGroup;

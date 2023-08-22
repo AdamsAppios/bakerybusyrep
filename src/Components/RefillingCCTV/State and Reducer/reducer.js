@@ -1,21 +1,4 @@
-import { actionTypes } from '../actions/actionTypes';
-
-const initialState = {
-    isBlue: false,
-    isRed: false,
-    originalBackgroundColor: '',
-    pickupCount: 0,
-    dealerCount: 0,
-    smallCount: 0,
-    squareCount: 0,
-    smallSquareCount: 0,
-    selectedDropdownValue: "",
-    date: "",
-    time: "",
-    textAreaValue: "",
-    multipleCount: "1",
-    selectedOption: 'pickup'
-};
+import {actionTypes} from './actionTypes';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -34,6 +17,8 @@ const reducer = (state, action) => {
                 default:
                     return state;
             }
+        case actionTypes.SET_SELECTED_OPTION:
+            return { ...state, selectedOption: action.value };
         case actionTypes.SET_VALUE:
             return { ...state, [action.field]: action.value };
         case actionTypes.INCREMENT_VALUE:
@@ -86,3 +71,5 @@ const reducer = (state, action) => {
             return state;
     }
 };
+
+export default reducer;
