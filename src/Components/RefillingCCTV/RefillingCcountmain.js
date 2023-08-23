@@ -1,13 +1,22 @@
 import {initialState } from './State and Reducer/state';
+import {actionTypes} from './State and Reducer/actionTypes';
 import {reducer} from './State and Reducer/reducer';
 import InputGroup from './Components/InputGroup';
 import RadioButtonGroup from './Components/RadioButtonGroup';
 import ButtonGroup from './Components/ButtonGroup';
-import { toggleBackgroundColor, speakMessage } from './Utilities/utils';
-import { useReducer } from 'react';
+import DropdownSelectorGroup from './Components/DropdownSelectorGroup';
+import { toggleBackgroundColor } from './Utilities/utils';
+import { useReducer, useEffect } from 'react';
 
-const RefillingCCTVMainWithReducer = () => {
+const RefillingCcountMain = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const radioOptions = [
+        { value: 'dealer', label: 'Dealer' },
+        { value: 'pickup', label: 'Pickup' },
+        { value: 'small', label: 'Small' },
+        { value: 'square', label: 'Square' },
+        { value: 'smallSquare', label: 'Small Square' },
+    ];
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Enter' && event.target.tagName !== 'INPUT') {
@@ -35,7 +44,7 @@ const RefillingCCTVMainWithReducer = () => {
     };
     
     const handleAdd = () => {
-        toggleBackgroundColor('blue');
+        toggleBackgroundColor('blue', dispatch, state);
         dispatch({
             type: actionTypes.ADJUST_COUNT,
             option: state.selectedOption,
@@ -46,7 +55,7 @@ const RefillingCCTVMainWithReducer = () => {
     };
     
     const handleSub = () => {
-        toggleBackgroundColor('red');
+        toggleBackgroundColor('red', dispatch, state);
         dispatch({
             type: actionTypes.ADJUST_COUNT,
             option: state.selectedOption,
@@ -77,6 +86,17 @@ const RefillingCCTVMainWithReducer = () => {
         });
     };
 
+    const bodyStyle = {
+        backgroundColor: state.isBlue ? 'blue' : (state.isRed ? 'red' : state.originalBackgroundColor),
+        minHeight: '100vh', 
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',
+    };
+
+
     return (
         <div style={bodyStyle}>
             <InputGroup label="Date:" value={state.date} onChange={(e) => setInputValue('date', e.target.value)} />
@@ -84,129 +104,53 @@ const RefillingCCTVMainWithReducer = () => {
             <DropdownSelectorGroup
                 label="Dropdown"
                 value={state.selectedDropdownValue}
-                onChange={(newValue) => setInputValue('selectedDropdownValue', newValue)}
+                onChange={(e) => setInputValue('selectedDropdownValue', e.target.value)}
+            />
+            <InputGroup label="Time:" value={state.time} onChange={(e) => setInputValue('time', e.target.value)} />
+            <InputGroup
+                label="Multiple"
+                value={state.multipleCount}
+                onChange={(e) => setInputValue('multipleCount', Number(e.target.value))}
             />
 
-            <div style={inputGroupStyle}>
-                <label>Date: </label>
-                <input type="date" value={state.date} onChange={(e) => setInputValue('date', e.target.value)} />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Time: </label>
-                <input type="time" value={state.time} onChange={(e) => setInputValue('time', e.target.value)} />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Dropdown: </label>
-                <select 
-                    value={state.selectedDropdownValue} 
-                    onChange={(e) => setInputValue('selectedDropdownValue', e.target.value)}
-                >
-                    <option value="Bellaswan">Bellaswan</option>
-                    <option value="ARSO">ARSO</option>
-                    <option value="Kalimpio">Kalimpio</option>
-                    <option value="Goldswan">Goldswan</option>
-                </select>
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Multiple: </label>
-                <input 
-                    type="text" 
-                    value={state.multipleCount} 
-                    onChange={(e) => setInputValue('multipleCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Dealer: </label>
-                <input 
-                    type="text" 
-                    value={state.dealerCount} 
-                    onChange={(e) => setInputValue('dealerCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Pickup: </label>
-                <input 
-                    type="text" 
-                    value={state.pickupCount} 
-                    onChange={(e) => setInputValue('pickupCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Small: </label>
-                <input 
-                    type="text" 
-                    value={state.smallCount} 
-                    onChange={(e) => setInputValue('smallCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Square: </label>
-                <input 
-                    type="text" 
-                    value={state.squareCount} 
-                    onChange={(e) => setInputValue('squareCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={inputGroupStyle}>
-                <label>Small Square: </label>
-                <input 
-                    type="text" 
-                    value={state.smallSquareCount} 
-                    onChange={(e) => setInputValue('smallSquareCount', Number(e.target.value))} 
-                />
-            </div>
-            <div style={radioButtonContainerStyle}>
-                <div>
-                    <input
-                        type="radio"
-                        value="dealer"
-                        checked={state.selectedOption === 'dealer'}
-                        onChange={handleChange}
-                    />
-                    <label>Dealer</label>
-                </div>
-                <div>
-                    <input
-                        type="radio"
-                        value="pickup"
-                        checked={state.selectedOption === 'pickup'}
-                        onChange={handleChange}
-                    />
-                    <label>Pickup</label>
-                </div>
-                <div>
-                    <input
-                        type="radio"
-                        value="small"
-                        checked={state.selectedOption === 'small'}
-                        onChange={handleChange}
-                    />
-                    <label>Small</label>
-                </div>
-                <div>
-                    <input
-                        type="radio"
-                        value="square"
-                        checked={state.selectedOption === 'square'}
-                        onChange={handleChange}
-                    />
-                    <label>Square</label>
-                </div>
-                <div>
-                    <input
-                        type="radio"
-                        value="smallSquare"
-                        checked={state.selectedOption === 'smallSquare'}
-                        onChange={handleChange}
-                    />
-                    <label>Small Square</label>
-                </div>
-            </div>
-            <div style={buttonGroupStyle}>
-                <button onClick={handleAdd}>Add</button>
-                <button onClick={handleSub}>Subtract</button>
-            </div>
-            <div style={inputGroupStyle}>
+            <InputGroup
+                label="Dealer"
+                value={state.dealerCount}
+                onChange={(e) => setInputValue('dealerCount', Number(e.target.value))}
+            />
+
+            <InputGroup
+                label="Pickup"
+                value={state.pickupCount}
+                onChange={(e) => setInputValue('pickupCount', Number(e.target.value))}
+            />
+
+            <InputGroup
+                label="Small"
+                value={state.smallCount}
+                onChange={(e) => setInputValue('smallCount', Number(e.target.value))}
+            />
+
+            <InputGroup
+                label="Square"
+                value={state.squareCount}
+                onChange={(e) => setInputValue('squareCount', Number(e.target.value))}
+            />
+
+            <InputGroup
+                label="Small Square"
+                value={state.smallSquareCount}
+                onChange={(e) => setInputValue('smallSquareCount', Number(e.target.value))}
+            />
+
+            <RadioButtonGroup 
+                options={radioOptions}
+                selectedValue={state.selectedOption}
+                onChange={handleChange}
+            />
+            <ButtonGroup buttons={ [{ label: 'Add', onClick: handleAdd },
+                                    { label: 'Subtract', onClick: handleSub },]} />
+            <div style={{margin: '10px 0',}}>
                 <textarea 
                     value={state.textAreaValue} 
                     onChange={(e) => setInputValue('textAreaValue', e.target.value)}
@@ -214,13 +158,11 @@ const RefillingCCTVMainWithReducer = () => {
                     cols="50"
                 ></textarea>
             </div>
-            <div style={buttonGroupStyle}>
-                <button onClick={handleSave}>Save</button>
-                <button onClick={handleLoad}>Load</button>
-            </div>
+            <ButtonGroup buttons={ [{ label: 'Save', onClick: handleSave },
+                                    { label: 'Load', onClick: handleLoad },]} />
         </div>
     );
 
 };
 
-export default RefillingCCTVMainWithReducer;
+export default RefillingCcountMain;

@@ -17,7 +17,7 @@ const DropdownSelectorGroup = ({
     return (
         <div style={inputGroupStyle}>
             <label>{label}: </label>
-            <select value={value} onChange={(e) => onChange(e.target.value)} >
+            <select value={value} onChange={onChange} >
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.label}

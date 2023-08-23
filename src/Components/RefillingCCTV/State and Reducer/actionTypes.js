@@ -1,4 +1,4 @@
-const actionTypes = {
+export const actionTypes = {
     SET_VALUE: 'SET_VALUE',
     INCREMENT_VALUE: 'INCREMENT_VALUE',
     DECREMENT_VALUE: 'DECREMENT_VALUE',

@@ -1,6 +1,6 @@
-import { actionTypes } from './actionTypes';
+import { actionTypes } from '../State and Reducer/actionTypes';
 
-const toggleBackgroundColor = (color) => {
+export const toggleBackgroundColor = (color, dispatch, state) => {
     // If the original background color is not set, get it and update the state
     if (!state.originalBackgroundColor) {
         const body = document.body;

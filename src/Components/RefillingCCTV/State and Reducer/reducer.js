@@ -1,6 +1,6 @@
 import {actionTypes} from './actionTypes';
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
     switch (action.type) {
         case actionTypes.ADJUST_COUNT:
             switch (action.option) {
@@ -72,4 +72,3 @@ const reducer = (state, action) => {
     }
 };
 
-export default reducer;
