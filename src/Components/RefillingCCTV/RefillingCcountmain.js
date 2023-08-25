@@ -1,14 +1,14 @@
 import {initialState } from './State and Reducer/state';
 import {actionTypes} from './State and Reducer/actionTypes';
 import {reducer} from './State and Reducer/reducer';
-import InputGroup from './Components/InputGroup';
-import RadioButtonGroup from './Components/RadioButtonGroup';
-import ButtonGroup from './Components/ButtonGroup';
-import DropdownSelectorGroup from './Components/DropdownSelectorGroup';
+import InputGroup from './components/InputGroup';
+import RadioButtonGroup from './components/RadioButtonGroup';
+import ButtonGroup from './components/ButtonGroup';
+import DropdownSelectorGroup from './components/DropdownSelectorGroup';
 import { toggleBackgroundColor } from './Utilities/utils';
 import { useReducer, useEffect } from 'react';
 
-const RefillingCcountMain = () => {
+const RefillingCcountmain = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const radioOptions = [
         { value: 'dealer', label: 'Dealer' },
@@ -17,16 +17,51 @@ const RefillingCcountMain = () => {
         { value: 'square', label: 'Square' },
         { value: 'smallSquare', label: 'Small Square' },
     ];
+
+    const shiftRadioButton = (direction) => {
+        const currentIndex = radioOptions.findIndex(option => option.value === state.selectedOption);
+        let nextIndex = currentIndex + direction;
+    
+        // Ensure that the next index wraps around and doesn't go out of bounds
+        if (nextIndex < 0) nextIndex = radioOptions.length - 1;
+        if (nextIndex >= radioOptions.length) nextIndex = 0;
+    
+        const nextValue = radioOptions[nextIndex].value;
+    
+        dispatch({
+            type: actionTypes.SET_SELECTED_OPTION,
+            value: nextValue
+        });
+    };
+
     useEffect(() => {
+
         const handleKeyDown = (event) => {
-            if (event.key === 'Enter' && event.target.tagName !== 'INPUT') {
-                handleAdd();  // Execute the function when Enter is pressed
-                event.preventDefault(); // This stops the default action of the Enter key
-            } else if (event.key === '-') {
-                handleSub();  // Execute the function when - (dash) is pressed
-                event.preventDefault(); // This stops the default action of the dash key, if required
+            switch(event.key) {
+                case 'Enter':
+                    if (event.target.tagName !== 'INPUT') {
+                        handleAdd();
+                        event.preventDefault();
+                    }
+                    break;
+                case '-':
+                    handleSub();
+                    event.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                    shiftRadioButton(-1);  // Shift to the previous radio button
+                    event.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    shiftRadioButton(1);  // Shift to the next radio button
+                    event.preventDefault();
+                    break;
+                default:
+                    break;
             }
         };
+
+        
         // Attaching the event listener
         document.addEventListener('keydown', handleKeyDown);
 
@@ -99,14 +134,13 @@ const RefillingCcountMain = () => {
 
     return (
         <div style={bodyStyle}>
-            <InputGroup label="Date:" value={state.date} onChange={(e) => setInputValue('date', e.target.value)} />
-            <InputGroup label="Time:" value={state.time} onChange={(e) => setInputValue('time', e.target.value)} />
+            <InputGroup type="date" label="Date:" value={state.date} onChange={(e) => setInputValue('date', e.target.value)} />
+            <InputGroup type="time" label="Time:" value={state.time} onChange={(e) => setInputValue('time', e.target.value)} />
             <DropdownSelectorGroup
                 label="Dropdown"
                 value={state.selectedDropdownValue}
                 onChange={(e) => setInputValue('selectedDropdownValue', e.target.value)}
             />
-            <InputGroup label="Time:" value={state.time} onChange={(e) => setInputValue('time', e.target.value)} />
             <InputGroup
                 label="Multiple"
                 value={state.multipleCount}
@@ -165,4 +199,4 @@ const RefillingCcountMain = () => {
 
 };
 
-export default RefillingCcountMain;
+export default RefillingCcountmain;

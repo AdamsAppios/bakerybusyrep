@@ -12,5 +12,5 @@ export const initialState = {
     time: "",
     textAreaValue: "",
     multipleCount: "1",
-    selectedOption: 'pickup'
+    selectedOption: 'dealer'
 };

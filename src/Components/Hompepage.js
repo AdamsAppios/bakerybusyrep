@@ -5,7 +5,7 @@ import Sendreport from "./Moonlitreports/Sendreport";
 import Moneymain from "./MoneyCounter/Moneymain";
 import GlorybeeMain from './Glorybee/GlorybeeMain';
 import RefillingCCTVMainWithReducer from './RefillingCCTV/RefillingCCTVMainWithReducer';
-import RefillingCcountMain from './RefillingCCTV/RefillingCcountMain'
+import RefillingCcountmain from './RefillingCCTV/RefillingCcountmain'
 function Homepage() {
   return (
     <Router>
@@ -14,7 +14,7 @@ function Homepage() {
         <Route path="/sendreport" element={<Sendreport />} />
         <Route path="/moneycount" element={<Moneymain />} />
         <Route path="/glorybee" element={<GlorybeeMain />} />
-        <Route path="/refcccount" element={<RefillingCcountMain />} />
+        <Route path="/refcccount" element={<RefillingCcountmain />} />
       </Routes>
     </Router>
   );
