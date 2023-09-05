@@ -1,29 +1,59 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Copytoclipboard from '../../Moonlitreports/Helpers/Copytoclipboard';
+const GloryExpensesMain = ({state, dispatch}) => {
 
-//Please move this to glory salesmain in the future, but you first need to reimplement the sales
-// in usereducer methods to get a gist of it
-const GloryExpensesMain = ({stringExpenses, setStringExpenses}) => {
-  const initialInputBoxesExpenses = [{ id: 1 }, { id: 2 }, {id:3}, {id:4}, {id:5}, {id:6}, {id:7}, {id:8}, {id:9}, {id:10}, {id:11}, {id:12}, {id:13}, {id:14}, {id:15}, {id:16},{id:17}, {id:18},{id:19}, {id:20}, {id:21}, {id:22}, {id:23}];
-  const [inputBoxesExpenses, setInputBoxesExpenses] = useState(initialInputBoxesExpenses);
-  const [valuesExpenses, setValuesExpenses] = useState({});
-  const [totalAmountExpenses, setTotalAmountExpenses] = useState(0);
-
+  const sortExpenses =  (inputString, totalSum) => {
+      const header = "Gud evening nong Expenses Jedamsa";
+      const dateRegex = /Jedamsa (\w+ \d+, \d{4})/;
+    
+      const matches = inputString.match(dateRegex);
+      const date = matches && matches[1];
+    
+      if (!date) {
+        console.log("Date not found.");
+        return;
+      }
+    
+      const headerWithDate = `${header} ${date} :`;
+      const footer = `Total Expenses nong: ${totalSum}`;
+    
+      const lines = inputString.split('\n');
+      const expenses = [];
+    
+      for (const line of lines) {
+        const parts = line.split('=');
+        if (parts.length === 2) {
+          const itemName = parts[0].trim();
+          const amount = parseFloat(parts[1]);
+          if (!isNaN(amount)) {
+            expenses.push({ itemName, amount });
+          }
+        }
+      }
+    
+      expenses.sort((a, b) => b.amount - a.amount);
+    
+      const sortedExpensesString = expenses.map(expense => `${expense.itemName}=${expense.amount}`).join('\n');
+      const result = `${headerWithDate}\n${sortedExpensesString}\n\n${footer}\n`;
+    
+      return result;
+  }
   const handleInputChange = (event, index) => {
     const { id, value } = event.target;
     if (id.startsWith('amt') && isNaN(value)) {
       return; // Ignore non-numeric input for amounts
     }
-    const updatedValues = { ...valuesExpenses, [id]: value };
-    setValuesExpenses(updatedValues);
+    const updatedValues = { ...state.valuesExpenses, [id]: value };
+    dispatch({type:"SET_VALUES_EXPENSES", payload: updatedValues })
 
     // Update the total amount
     let sum = 0;
-    for (let i = 0; i < inputBoxesExpenses.length; i++) {
+    for (let i = 0; i < state.inputBoxesExpenses.length; i++) {
       const amtValue = parseFloat(updatedValues[`amt${i}`] || '0');
       sum += amtValue;
     }
-    setTotalAmountExpenses(sum);
+    //setTotalAmountExpenses(sum);
+    dispatch({action:'SET_TOTAL_AMOUNT_EXPENSES', payload:sum});
 
     // Update the string report
     const currentDate = new Date();
@@ -32,12 +62,12 @@ const GloryExpensesMain = ({stringExpenses, setStringExpenses}) => {
     let report = `Gud evening nong Expenses Jedamsa ${philippineDate} : \n`;
     report += `${formatValuesAsString(updatedValues)}\n\n`;
     report+= `Total expenses nong: ${sum.toFixed(2)}`;
-    setStringExpenses(report);
+    dispatch({type:"SET_STRING_EXPENSES", payload: sortExpenses(report,sum) });
   };
 
   const formatValuesAsString = (updatedValues) => {
     let result = [];
-    for (let i = 0; i < inputBoxesExpenses.length; i++) {
+    for (let i = 0; i < state.inputBoxesExpenses.length; i++) {
       const nameValue = updatedValues[`name${i}`] || '';
       const amtValue = updatedValues[`amt${i}`] || '';
       if (nameValue !== '' || amtValue !== '') {
@@ -48,38 +78,38 @@ const GloryExpensesMain = ({stringExpenses, setStringExpenses}) => {
   };
 
   const handleAddClick = () => {
-    setInputBoxesExpenses([...inputBoxesExpenses, { id: inputBoxesExpenses.length + 1 }]);
+    //setInputBoxesExpenses([...inputBoxesExpenses, { id: inputBoxesExpenses.length + 1 }]);
+    dispatch({
+      type: 'SET_INPUT_BOXES_EXPENSES',
+      payload: [...state.inputBoxesExpenses, { id: state.inputBoxesExpenses.length + 1 }]
+    });
   };
 
   const handleEraseAll = () => {
-    setInputBoxesExpenses(initialInputBoxesExpenses); // Revert to initial input boxes
-    setValuesExpenses({});                    // Clear values
-    setTotalAmountExpenses(0);                // Reset total amount
-    setStringExpenses('');              // Clear string report
+    dispatch({type:"SET_ERASE_EXPENSES"});
   };
 
   return (
     <div>
       <h1>Glory Bee Expenses</h1>
-      <Copytoclipboard stringReport={stringExpenses} handleEraseAll={handleEraseAll} copyButtonLabel="Copy Report" eraseButtonLabel="Erase All" readOnly />
+      <Copytoclipboard stringReport={state.stringExpenses} handleEraseAll={handleEraseAll} copyButtonLabel="Copy Report" eraseButtonLabel="Erase Expenses" readOnly />
       <br />
       <br />
       <h3>Total Amount:</h3>
-      <pre>{totalAmountExpenses.toFixed(2)}</pre>
+      <pre>{state.totalAmountExpenses.toFixed(2)}</pre>
       <table>
       <tr>
         <th>Name</th>
         <th>Amount</th>
       </tr>
-      {inputBoxesExpenses.map((box, index) => (
-        //<div key={index}>
+      {state.inputBoxesExpenses.map((box, index) => (
         <tr key={index}>
           <td>
             <input
               type="text"
               id={`name${index}`}
               placeholder={`Name ${index}`}
-              value={valuesExpenses[`name${index}`] || ''} // Control the input value
+              value={state.valuesExpenses[`name${index}`] || ''} // Control the input value
               onChange={(event) => handleInputChange(event, index)}
             />
           </td>
@@ -88,7 +118,7 @@ const GloryExpensesMain = ({stringExpenses, setStringExpenses}) => {
                 type="number"
                 id={`amt${index}`}
                 placeholder={`Amount ${index}`}
-                value={valuesExpenses[`amt${index}`] || ''}
+                value={state.valuesExpenses[`amt${index}`] || ''}
                 step="0.01"   // Step of 0.01 enforces decimal rounding off by two
                 min="0"       // Minimum value allowed
                 max="999999.99" // Maximum value allowed
@@ -96,7 +126,6 @@ const GloryExpensesMain = ({stringExpenses, setStringExpenses}) => {
             />
           </td>
         </tr>
-        //</div>
       ))}
       </table>
       <br />

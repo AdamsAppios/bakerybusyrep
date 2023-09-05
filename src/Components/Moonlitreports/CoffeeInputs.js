@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import Customtext from './Helpers/Customtext';
 import Copytoclipboard from './Helpers/Copytoclipboard';
-function CoffeeInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
+function CoffeeInputs({handleOtherFocus}) {
   const [coffeeReport, setCoffeeReport] = useState("");
   const [formValues, setFormValues] = useState({
     halin: "",
