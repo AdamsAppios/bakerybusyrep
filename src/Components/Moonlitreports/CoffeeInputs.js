@@ -1,16 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import Customtext from './Helpers/Customtext';
 import Copytoclipboard from './Helpers/Copytoclipboard';
-function CoffeeInputs({handleOtherFocus}) {
-  const [coffeeReport, setCoffeeReport] = useState("");
-  const [formValues, setFormValues] = useState({
-    halin: "",
-    choco: "",
-    coffee: "",
-    caramel: "",
-    cupsBeg: "",
-    cupsEnd: ""
-  });
+function CoffeeInputs({handleOtherFocus, coffeeReport, setCoffeeReport, formValues, setFormValues}) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

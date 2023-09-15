@@ -60,6 +60,18 @@ function Sendreport() {
   const [cashSum, setCashSum] = useState(0);
   const [stringReport, setStringReport] = useState('');
 
+  //coffee inputs:
+  
+  const [coffeeReport, setCoffeeReport] = useState("");
+  const [formValues, setFormValues] = useState({
+    halin: "",
+    choco: "",
+    coffee: "",
+    caramel: "",
+    cupsBeg: "",
+    cupsEnd: ""
+  });
+
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
   };
@@ -183,7 +195,7 @@ function Sendreport() {
         <div className="tab-content">
           {activeTab === 1 && <SalesInputs dispatch={dispatch} totalCash={cashSum} state={state} handleFocus={handleFocus} handleKeyPress={handleKeyPress} handleStringChange={hschange} handleTextboxChange={handleTextboxChange} />}
           {activeTab === 2 && <OtherInputs state={state} handleKeyPress={handleKeyPress} hschange={hschange} handleOtherFocus={handleOtherFocus} />}
-          {activeTab === 3 && <CoffeeInputs state={state} handleEraseAll={handleEraseAll} handleKeyPress={handleKeyPress} hschange={hschange} handleOtherFocus={handleOtherFocus} />}
+          {activeTab === 3 && <CoffeeInputs handleOtherFocus={handleOtherFocus} coffeeReport={coffeeReport} setCoffeeReport={setCoffeeReport} formValues={formValues} setFormValues={setFormValues} />}
         </div>
       </div>
 

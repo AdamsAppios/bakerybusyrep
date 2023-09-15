@@ -1,10 +1,10 @@
-const ResetBills = ({ state, dispatch }) => {
+const ResetBills = ({ dispatch }) => {
     const handleClick = () => {
         dispatch({ type: 'reset' });
     };
   return (
     <button onClick={handleClick}>
-      Clear State
+      Erase Money
     </button>
   );
 };
