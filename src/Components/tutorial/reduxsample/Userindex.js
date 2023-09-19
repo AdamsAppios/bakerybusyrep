@@ -1,23 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App';
+import { store } from './app/store';
 
-export const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    name: '',
-    age: 0,
-  },
-  reducers: {
-    setName: (state, action) => {
-      state.name = action.payload;
-    },
-    setAge: (state, action) => {
-      state.age = action.payload;
-    }
-  }
-});
-
-export const { setName, setAge } = userSlice.actions;
-
-export const selectUser = state => state.user;
-
-export default userSlice.reducer;
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);

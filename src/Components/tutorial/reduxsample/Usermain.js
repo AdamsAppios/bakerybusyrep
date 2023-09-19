@@ -3,7 +3,7 @@ import User from './features/User';
 
 UserMain = () => {
   return (
-    <div className="UserMain">
+    <div>
       <User />
     </div>
   );
