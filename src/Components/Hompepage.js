@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sendreport from "./Moonlitreports/Sendreport";
 import Moneymain from "./MoneyCounter/Moneymain";
 import GlorybeeMain from './Glorybee/GlorybeeMain';
-import RefillingCCTVMainWithReducer from './RefillingCCTV/RefillingCCTVMainWithReducer';
 import RefillingCcountmain from './RefillingCCTV/RefillingCcountmain'
+import Final from './tutorial/reduxsample/components/Final';
 function Homepage() {
   return (
     <Router>
@@ -15,6 +15,8 @@ function Homepage() {
         <Route path="/moneycount" element={<Moneymain />} />
         <Route path="/glorybee" element={<GlorybeeMain />} />
         <Route path="/refcccount" element={<RefillingCcountmain />} />
+        <Route path="/tutorial" element={<Final />} />
+
       </Routes>
     </Router>
   );
