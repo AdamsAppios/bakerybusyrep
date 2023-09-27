@@ -5,7 +5,8 @@ import Sendreport from "./Moonlitreports/Sendreport";
 import Moneymain from "./MoneyCounter/Moneymain";
 import GlorybeeMain from './Glorybee/GlorybeeMain';
 import RefillingCcountmain from './RefillingCCTV/RefillingCcountmain'
-import Final from './tutorial/reduxsample/components/Final';
+import UserMain from './tutorial/reduxsample/UserMain';
+import ContextApiSample from './tutorial/contextapi/ContextApiSample';
 function Homepage() {
   return (
     <Router>
@@ -15,8 +16,7 @@ function Homepage() {
         <Route path="/moneycount" element={<Moneymain />} />
         <Route path="/glorybee" element={<GlorybeeMain />} />
         <Route path="/refcccount" element={<RefillingCcountmain />} />
-        <Route path="/tutorial" element={<Final />} />
-
+        <Route path="/tutorial" element={<ContextApiSample />} />
       </Routes>
     </Router>
   );
