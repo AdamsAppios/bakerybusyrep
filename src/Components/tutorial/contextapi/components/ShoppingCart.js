@@ -1,9 +1,9 @@
 // ShoppingCart.js
-import React, { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const ShoppingCart = () => {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, incrementQuantity, decrementQuantity } = useContext(CartContext);
 
   return (
     <div className="shopping-cart">
@@ -11,8 +11,10 @@ const ShoppingCart = () => {
       <ul>
         {cart.map((item) => (
           <li key={item.id}>
-            {item.name} - ${item.price}{' '}
+            {item.name} - ${item.price} x {item.quantity}{' '}
             <button onClick={() => removeFromCart(item)}>Remove</button>
+            <button onClick={() => incrementQuantity(item)}>+</button>
+            <button onClick={() => decrementQuantity(item)}>-</button>
           </li>
         ))}
       </ul>
