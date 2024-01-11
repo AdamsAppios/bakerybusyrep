@@ -16,10 +16,9 @@ function OtherInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
               <Customtext label="Toasted" name="Toasted" Placeholder="Toasted" value={state.Toasted} OnChange={hschange} handleFocus={handleOtherFocus}/>
               <Customtext label="NSSale" name="NSSale" Placeholder="NS Sale" value={state.NSSale} OnChange={hschange} handleFocus={handleOtherFocus}/>
               <Customtext label="NSStocks" name="NSStocks" Placeholder="NS Stocks" value={state.NSStocks} OnChange={hschange} handleFocus={handleOtherFocus}/>
-              <Customtext label="WilkinsSale" name="WilkinsSale" Placeholder="Wilkins Sale" value={state.WilkinsSale} OnChange={hschange} handleFocus={handleOtherFocus}/>            
-              <Customtext label="WilkinsStocks" name="WilkinsStocks" Placeholder="Wilkins Stocks" value={state.WilkinsStocks} OnChange={hschange} handleFocus={handleOtherFocus}/>            
               <Customtext label="SD" name="SD" value={state.SD} Placeholder="SD" OnChange={hschange} handleFocus={handleOtherFocus}/>                
-              <NumbersInput label="Mineral" name="Mineral" value={state.Mineral} Placeholder="Mineral Number only" onChange={hschange} handleFocus={handleOtherFocus} handleKeyPress={handleKeyPress}/>                
+              <NumbersInput label="Mineral" name="Mineral" value={state.Mineral} Placeholder="Mineral Number only" onChange={hschange} handleFocus={handleOtherFocus} handleKeyPress={handleKeyPress}/>                                
+              <Customtext label="Mantika" name="Mantika" value={state.Mantika} Placeholder="example 1 cont 4 gals 1.5kilos" OnChange={hschange} handleFocus={handleOtherFocus}/>                
               <TextareaInput label="Pullouts" name="Pullouts" Value={state.Pullouts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={pulloutsPlaceholder}  />
               <TextareaInput label="Accounts" name="Accounts"  Value={state.Accounts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={accountsPlaceholder} />
               <TextareaInput label="Workers" name="Workers"  Value={state.Workers} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={workersPlaceholder} />

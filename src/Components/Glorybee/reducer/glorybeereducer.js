@@ -1,4 +1,4 @@
-const defaultNames = ["Sales","1.5", "12oz", "C2", "Charda", "Cobra", "Coffee", "Drinks", "Gatorade", "Ice-cream", "Md", "Nss", "Nsb", "Swakto"];
+const defaultNames = ["Sales","1.5", "12oz", "C2 Big", "C2 Small", "Charda", "Cobra", "Coffee", "Drinks", "Gatorade", "Ice-cream", "Md", "Nss", "Nsb", "Swakto"];
 
 //export this to other react classes
 export const getDefaultValues = () => {

@@ -7,6 +7,8 @@ import GlorybeeMain from './Glorybee/GlorybeeMain';
 import RefillingCcountmain from './RefillingCCTV/RefillingCcountmain'
 import UserMain from './tutorial/reduxsample/UserMain';
 import ContextApiSample from './tutorial/contextapi/ContextApiSample';
+import FoundationPart1 from './FoundationExam/FoundationPart1';
+import FoundationPart2 from './FoundationExam/FoundationPart2';
 function Homepage() {
   return (
     <Router>
@@ -17,6 +19,9 @@ function Homepage() {
         <Route path="/glorybee" element={<GlorybeeMain />} />
         <Route path="/refcccount" element={<RefillingCcountmain />} />
         <Route path="/tutorial" element={<ContextApiSample />} />
+        <Route path="/foundationexampart1" element={<FoundationPart1 />} />
+        <Route path="/foundationexampart2" element={<FoundationPart2 />} />
+
       </Routes>
     </Router>
   );

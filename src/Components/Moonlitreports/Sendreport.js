@@ -20,10 +20,9 @@ const InitialState = {
   Toasted : '',
   NSSale : '',
   NSStocks : '',
-  WilkinsSale : '',
-  WilkinsStocks : '',
   SD : '',
   Mineral : '',
+  Mantika : '',
   Pullouts : '',
   Accounts : '',
   Workers : '',
@@ -61,9 +60,11 @@ function Sendreport() {
   const [stringReport, setStringReport] = useState('');
 
   //coffee inputs:
-  
+
   const [coffeeReport, setCoffeeReport] = useState("");
   const [formValues, setFormValues] = useState({
+    // Format the current date to YYYY-MM-DD format
+    date: new Date().toISOString().split('T')[0],
     halin: "",
     choco: "",
     coffee: "",
@@ -75,6 +76,7 @@ function Sendreport() {
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
   };
+
 
   useEffect(() => {
     let makeReport = "";

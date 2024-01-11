@@ -32,7 +32,8 @@ const GlorySalesMain = ({state, dispatch}) => {
     let result = [];
     for (let i = 0; i < state.inputBoxesSales.length; i++) {
       const nameValue = updatedValues[`name${i}`] || '';
-      const amtValue = updatedValues[`amt${i}`] || '';
+      let amtValue = updatedValues[`amt${i}`] || '';
+      amtValue = (amtValue == "") ? 0 : amtValue;
       if (nameValue !== '' || amtValue !== '') {
         result.push(`${nameValue}=${amtValue}`);
       }
