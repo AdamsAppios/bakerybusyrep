@@ -22,6 +22,9 @@ const InitialState = {
   NSStocks : '',
   SD : '',
   Mineral : '',
+  plasticNo3 : '',
+  plasticNo6 : '',
+  plasticTiny : '',
   Mantika : '',
   Pullouts : '',
   Accounts : '',
@@ -104,7 +107,7 @@ function Sendreport() {
           if (state[key] !== "") {
             anyHasValue = true;
           }
-          if (key=== 'Mineral') {
+          if (key === 'Mineral') {
             if (state[key] !== "")
               OtherReport +=`${key} = ${state[key]} x 15 = ${state[key]*15}\n`;
             else
@@ -112,10 +115,11 @@ function Sendreport() {
           } else if (key === 'Pullouts' || key === "Accounts" || key === "Workers") {
             OtherReport += `${key} = \n${state[key]}\n\n`;
           } else {
-          OtherReport +=`${key} = ${state[key]}\n`;
+            OtherReport +=`${key} = ${state[key]}\n`;
           }
         }
       }
+      console.log(`Other report is ${OtherReport}`)
     }
     //OtherReport += `\nPullouts: \n${state.Pullouts}\n\nAccounts: \n${state.Accounts}\n\nWorkers: \n${state.Workers} `;
     makeReport += (anyHasValue === true ) ? OtherReport : '' ;

@@ -6,7 +6,7 @@ function CoffeeInputs({handleOtherFocus, coffeeReport, setCoffeeReport, formValu
 
   
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.tvarget;
     setFormValues((prevFormValues) => ({
       ...prevFormValues,
       [name]: value

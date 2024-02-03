@@ -18,7 +18,13 @@ function OtherInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
               <Customtext label="NSStocks" name="NSStocks" Placeholder="NS Stocks" value={state.NSStocks} OnChange={hschange} handleFocus={handleOtherFocus}/>
               <Customtext label="SD" name="SD" value={state.SD} Placeholder="SD" OnChange={hschange} handleFocus={handleOtherFocus}/>                
               <NumbersInput label="Mineral" name="Mineral" value={state.Mineral} Placeholder="Mineral Number only" onChange={hschange} handleFocus={handleOtherFocus} handleKeyPress={handleKeyPress}/>                                
-              <Customtext label="Mantika" name="Mantika" value={state.Mantika} Placeholder="example 1 cont 4 gals 1.5kilos" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              
+              <p> Stocks Remaining</p>
+              <Customtext label="Mantika" name="Mantika" value={state.Mantika} Placeholder="stocks sa mantika" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="#3" name="plasticNo3" value={state.plasticNo3} Placeholder="stocks plastic #3" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="#6" name="plasticNo6" value={state.plasticNo6} Placeholder="stocks plastic #6" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="tiny" name="plasticTiny" value={state.plasticTiny} Placeholder="stocks plastic tiny" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+
               <TextareaInput label="Pullouts" name="Pullouts" Value={state.Pullouts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={pulloutsPlaceholder}  />
               <TextareaInput label="Accounts" name="Accounts"  Value={state.Accounts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={accountsPlaceholder} />
               <TextareaInput label="Workers" name="Workers"  Value={state.Workers} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={workersPlaceholder} />
