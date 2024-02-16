@@ -31,6 +31,34 @@ const InitialState = {
   Workers : '',
 };
 
+// const InitialState = {
+//   time: ['','Time'],
+//   cashier : ['','Cashier'],
+//   textbox1000: '',
+//   textbox500: '',
+//   textbox200: '',
+//   textbox100: '',
+//   textbox50: '',
+//   textbox20: '',
+//   textbox10: '',
+//   textbox5: '',
+//   textbox1: '',
+//   SB : ['','Sliced Bread'],
+//   Coins : ['','Coins'],
+//   Toasted : ['','Toasted'],
+//   NSSale : ['','NS Sale'],
+//   NSStocks : ['','NS Stocks'],
+//   SD : ['','SD'],
+//   Mineral : ['','Mineral'],
+//   plasticNo3 : ['','Plastic #3'],
+//   plasticNo6 : ['','Plastic #6'],
+//   plasticTiny : ['','Plastic Tiny'],
+//   Mantika : ['','Oil Stocks'],
+//   Pullouts : ['','Pull Outs'],
+//   Accounts : ['','Accounts'],
+//   Workers : ['','Workers'],
+// };
+
 function reducer(state, action) {
   switch (action.type) {
     case 'changeTextbox':
@@ -126,6 +154,52 @@ function Sendreport() {
     setCashSum(cashSum)
     setStringReport(makeReport)
   }, [state]);
+
+  // useEffect(() => {
+  //   let makeReport = "";
+  //   let cashSum=0;
+  //   makeReport += `Cashier: ${state.cashier} - ${state.time} \n`;
+  //   for (let key in state) {
+  //     if (key.startsWith('textbox') && state.hasOwnProperty(key) && state[key] !== '') {
+  //       let value = parseInt(state[key]);
+  //       let multiple = parseInt(key.slice(7))
+  //       let multiply = value * multiple;
+  //       cashSum += multiply;
+  //       makeReport += `${multiple}x${value} = ${multiply}\n`;
+  //     }
+  //   }
+  //   makeReport += `Total: ${cashSum}\n`;
+  //   let OtherReport = '';
+  //   let foundSB = false;
+  //   let anyHasValue=false;
+  //   for (let key in state) {
+  //     if (state.hasOwnProperty(key)) {
+  //       if (key === "SB") {
+  //         foundSB = true;
+  //       }
+  //       if (foundSB) {
+  //         if (state[key][0] !== "") {
+  //           anyHasValue = true;
+  //         }
+  //         if (key === 'Mineral') {
+  //           if (state[key] !== "")
+  //             OtherReport +=`${state[key][1]} = ${state[key][0]} x 15 = ${state[key][0]*15}\n`;
+  //           else
+  //             OtherReport += `${state[key][1]} = None\n`;            
+  //         } else if (key === 'Pullouts' || key === "Accounts" || key === "Workers") {
+  //           OtherReport += `${state[key][1]} = \n${state[key][0]}\n\n`;
+  //         } else {
+  //           OtherReport +=`${state[key][1]} = ${state[key][0]}\n`;
+  //         }
+  //       }
+  //     }
+  //     console.log(`Other report is ${OtherReport}`)
+  //   }
+  //   //OtherReport += `\nPullouts: \n${state.Pullouts}\n\nAccounts: \n${state.Accounts}\n\nWorkers: \n${state.Workers} `;
+  //   makeReport += (anyHasValue === true ) ? OtherReport : '' ;
+  //   setCashSum(cashSum)
+  //   setStringReport(makeReport)
+  // }, [state]);
 
   const handleFocus = (e) => {
     const { name } = e.target;
