@@ -22,42 +22,15 @@ const InitialState = {
   NSStocks : '',
   SD : '',
   Mineral : '',
-  plasticNo3 : '',
-  plasticNo6 : '',
-  plasticTiny : '',
+  plastic_Loaf : '',
+  plastic_No3 : '',
+  plastic_No6 : '',
+  plastic_Tiny : '',
   Mantika : '',
   Pullouts : '',
   Accounts : '',
   Workers : '',
 };
-
-// const InitialState = {
-//   time: ['','Time'],
-//   cashier : ['','Cashier'],
-//   textbox1000: '',
-//   textbox500: '',
-//   textbox200: '',
-//   textbox100: '',
-//   textbox50: '',
-//   textbox20: '',
-//   textbox10: '',
-//   textbox5: '',
-//   textbox1: '',
-//   SB : ['','Sliced Bread'],
-//   Coins : ['','Coins'],
-//   Toasted : ['','Toasted'],
-//   NSSale : ['','NS Sale'],
-//   NSStocks : ['','NS Stocks'],
-//   SD : ['','SD'],
-//   Mineral : ['','Mineral'],
-//   plasticNo3 : ['','Plastic #3'],
-//   plasticNo6 : ['','Plastic #6'],
-//   plasticTiny : ['','Plastic Tiny'],
-//   Mantika : ['','Oil Stocks'],
-//   Pullouts : ['','Pull Outs'],
-//   Accounts : ['','Accounts'],
-//   Workers : ['','Workers'],
-// };
 
 function reducer(state, action) {
   switch (action.type) {
@@ -122,7 +95,7 @@ function Sendreport() {
         makeReport += `${multiple}x${value} = ${multiply}\n`;
       }
     }
-    makeReport += `Total: ${cashSum}\n`;
+    makeReport += `Total: ${cashSum}\n\n`;
     let OtherReport = '';
     let foundSB = false;
     let anyHasValue=false;

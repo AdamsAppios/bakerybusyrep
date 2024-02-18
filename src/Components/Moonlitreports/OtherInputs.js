@@ -21,9 +21,10 @@ function OtherInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
               
               <p> Stocks Remaining</p>
               <Customtext label="Mantika" name="Mantika" value={state.Mantika} Placeholder="stocks sa mantika" OnChange={hschange} handleFocus={handleOtherFocus}/>                
-              <Customtext label="#3" name="plasticNo3" value={state.plasticNo3} Placeholder="stocks plastic #3" OnChange={hschange} handleFocus={handleOtherFocus}/>                
-              <Customtext label="#6" name="plasticNo6" value={state.plasticNo6} Placeholder="stocks plastic #6" OnChange={hschange} handleFocus={handleOtherFocus}/>                
-              <Customtext label="tiny" name="plasticTiny" value={state.plasticTiny} Placeholder="stocks plastic tiny" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="Loaf Plastic" name="plastic_Loaf" value={state.plastic_Loaf} Placeholder="stocks sa loaf plastic" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="Plastic #3" name="plastic_No3" value={state.plastic_No3} Placeholder="stocks plastic #3" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="Plastic #6" name="plastic_No6" value={state.plastic_No6} Placeholder="stocks plastic #6" OnChange={hschange} handleFocus={handleOtherFocus}/>                
+              <Customtext label="Plastic tiny" name="plastic_Tiny" value={state.plastic_Tiny} Placeholder="stocks plastic tiny" OnChange={hschange} handleFocus={handleOtherFocus}/>                
 
               <TextareaInput label="Pullouts" name="Pullouts" Value={state.Pullouts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={pulloutsPlaceholder}  />
               <TextareaInput label="Accounts" name="Accounts"  Value={state.Accounts} hschange={hschange} handleFocus={handleOtherFocus} Placeholder={accountsPlaceholder} />
