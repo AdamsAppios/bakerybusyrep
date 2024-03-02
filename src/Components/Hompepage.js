@@ -5,7 +5,6 @@ import Sendreport from "./Moonlitreports/Sendreport";
 import Moneymain from "./MoneyCounter/Moneymain";
 import GlorybeeMain from './Glorybee/GlorybeeMain';
 import RefillingCcountmain from './RefillingCCTV/RefillingCcountmain'
-import UserMain from './tutorial/reduxsample/UserMain';
 import ContextApiSample from './tutorial/contextapi/ContextApiSample';
 import FoundationPart1 from './FoundationExam/FoundationPart1';
 import FoundationPart2 from './FoundationExam/FoundationPart2';

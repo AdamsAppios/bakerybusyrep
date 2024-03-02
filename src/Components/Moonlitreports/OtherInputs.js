@@ -11,6 +11,7 @@ function OtherInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
         <table>
           <tbody>
               <h5>Fill up inig 6pm ug 6am</h5>
+              <Customtext label="Total Sales (from 6am to 6pm / 6pm to 6am)" name="Total_Sales" value={state.Total_Sales} Placeholder="Total Sales Iadd sa imo duty" OnChange={hschange} handleFocus={handleOtherFocus} />
               <Customtext label="SB" name="SB" value={state.SB} Placeholder="SB Example : 100 in 45" OnChange={hschange} handleFocus={handleOtherFocus} />
               <Customtext label="Coins" name="Coins" Placeholder="Coins Putos" value={state.Coins} OnChange={hschange} handleFocus={handleOtherFocus}/>
               <Customtext label="Toasted" name="Toasted" Placeholder="Toasted" value={state.Toasted} OnChange={hschange} handleFocus={handleOtherFocus}/>
@@ -19,7 +20,7 @@ function OtherInputs({state, handleKeyPress, hschange, handleOtherFocus}) {
               <Customtext label="SD" name="SD" value={state.SD} Placeholder="SD" OnChange={hschange} handleFocus={handleOtherFocus}/>                
               <NumbersInput label="Mineral" name="Mineral" value={state.Mineral} Placeholder="Mineral Number only" onChange={hschange} handleFocus={handleOtherFocus} handleKeyPress={handleKeyPress}/>                                
               
-              <p> Stocks Remaining</p>
+              <p> Stocks Remaining:</p>
               <Customtext label="Mantika" name="Mantika" value={state.Mantika} Placeholder="stocks sa mantika" OnChange={hschange} handleFocus={handleOtherFocus}/>                
               <Customtext label="Loaf Plastic" name="plastic_Loaf" value={state.plastic_Loaf} Placeholder="stocks sa loaf plastic" OnChange={hschange} handleFocus={handleOtherFocus}/>                
               <Customtext label="Plastic #3" name="plastic_No3" value={state.plastic_No3} Placeholder="stocks plastic #3" OnChange={hschange} handleFocus={handleOtherFocus}/>                
